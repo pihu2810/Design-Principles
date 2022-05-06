@@ -18,4 +18,14 @@ public class CensusAnalyzerStateCodeTest
             e.printStackTrace();
         }
     }
+    @Test
+    public void givenIndianStateCSVFileReturnsInCorrectRecords() {
+        CensusAnalySer censusAnalyzer = new CensusAnalySer();
+        try {
+            int numOfRecord = censusAnalyzer.loadIndiaCensusData(INDIA_CENSUS_CSV_PATH);
+            Assert.assertEquals(40, numOfRecord);
+        } catch (CensusAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
 }

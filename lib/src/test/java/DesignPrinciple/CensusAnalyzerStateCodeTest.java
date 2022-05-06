@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class CensusAnalyzerStateCodeTest 
 {
 	private static final String INDIA_CENSUS_CSV_PATH = "C:\\Users\\susha\\Desktop\\DesignPrinciple\\lib\\src\\test\\resources\\IndiaStateCode.csv";
-
+	private static final String INDIA_STATE_CSV_WRONG_FILETYPE = "C:\\Users\\susha\\Desktop\\DesignPrinciple\\lib\\src\\test\\resources\\IndiaStateCode.pdf";
     @Test
     public void givenIndianCensusCSVFileReturnsCorrectRecords() {
         CensusAnalySer censusAnalyzer = new CensusAnalySer();
@@ -28,4 +28,15 @@ public class CensusAnalyzerStateCodeTest
             e.printStackTrace();
         }
     }
+    @Test
+    public void givenIndianStateCSVFileReturnsInCorrecFileType_But_PathShouldBeCorrect() {
+        CensusAnalySer censusAnalyzer = new CensusAnalySer();
+        try {
+            int numOfRecord = censusAnalyzer.loadIndiaCensusData(INDIA_STATE_CSV_WRONG_FILETYPE);
+            Assert.assertEquals(29, numOfRecord);
+        } catch (CensusAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
